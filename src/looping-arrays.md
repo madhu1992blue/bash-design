@@ -1,15 +1,6 @@
-# Loop Arrays
-
-Let's say have an array in bash:
-
-```bash
-#!/bin/bash
-# Define an array
-arr=("elem1" "elem 2" "elem3" "elem$4")
-```
+# Loop Array Elements
 
 If we want to loop over each element of this array, our naive attempt might look like this:
-
 ```bash
 #!/bin/bash
 # Define an array
