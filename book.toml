@@ -1,0 +1,5 @@
+[book]
+authors = ["Madhusudan N"]
+language = "en"
+src = "src"
+title = "Bash Design"
