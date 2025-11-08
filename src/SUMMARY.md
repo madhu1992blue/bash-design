@@ -1,4 +1,4 @@
 # Summary
 
-- [Loop Lines](./looping-lines.md)
+- [Loop Lines of a File](./looping-file-lines.md)
 - [Loop arrays](./looping-arrays.md)
