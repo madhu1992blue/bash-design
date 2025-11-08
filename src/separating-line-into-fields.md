@@ -56,4 +56,4 @@ while read -r field98; do
     echo "field98: $field98"
 done <<< $(cut -d',' -f98 file.txt)
 ```
-This approach leverages `cut` to process the entire file at once, and then pipes the output to the `while` loop for further processing. This minimizes the number of times `cut` is invoked, making it more efficient for large files.
+This approach leverages `cut` to process the entire file at once, and then send the output to the `while` loop for further processing. This minimizes the number of times `cut` is invoked, making it more efficient for large files.
