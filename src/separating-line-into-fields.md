@@ -54,6 +54,6 @@ When number of lines is large, combining `cut` with input redirection is even mo
 # More efficient way to get specific fields using cut with input redirection
 while read -r field98; do
     echo "field98: $field98"
-done <<< $(cut -d',' -f98 file.txt)
+done < <(cut -d',' -f98 file.txt)
 ```
 This approach leverages `cut` to process the entire file at once, and then send the output to the `while` loop for further processing. This minimizes the number of times `cut` is invoked, making it more efficient for large files.
