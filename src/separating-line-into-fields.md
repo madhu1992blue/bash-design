@@ -1,4 +1,4 @@
-# Separate Line Into Fields
+# Separate Each Line Into Fields
 
 Intuition says to use `cut` in a loop but this is quite inefficient:
 ```bash
