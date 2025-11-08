@@ -41,7 +41,7 @@ If you have a large number of fields and only need specific ones, using `cut` on
 ```bash
 #!/bin/bash
 # A better way(but still naive way) to get specific fields when number of fields is large and you need a field of higher number.
-while read -r line; do
+IFS= while read -r line; do
     field98=$(echo "$line" | cut -d',' -f98)
     echo "field98: $field98"
 done < file.txt
