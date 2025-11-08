@@ -52,7 +52,7 @@ When number of lines is large, combining `cut` with input redirection is even mo
 ```bash
 #!/bin/bash
 # More efficient way to get specific fields using cut with input redirection
-while IFS= read -r field98; do
+while IFS= read -r field98; do # We make this robust by using IFS and using `read` with `-r`
     echo "field98: $field98"
 done < <(cut -d',' -f98 file.txt)
 ```
