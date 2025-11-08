@@ -43,12 +43,31 @@ This method reads the file line by line, preserving spaces and special character
 - IFS is set to an empty value to prevent leading/trailing whitespace from being trimmed.
 - `-r` prevents backslashes from being interpreted as escape characters.
 
-Alternatively, you can use input redirection to avoid using `cat`:
+There's still a problem with this approach:
+The `while` loop runs in a subshell due to the pipe, so any variables modified inside the loop won't be accessible outside of it.
+
+Let's see an example:
+```bash
+#!/bin/bash
+# Demonstrating subshell issue with while loop
+count=0
+cat lines | while IFS= read -r line; do
+  count=$((count + 1))
+done
+echo "Total lines: $count"
+```
+You might expect the output to be `Total lines: 3`, but it will actually be `Total lines: 0` because the `count` variable is modified in a subshell.
+After the pipe, everything runs in a subshell, so changes to `count` are lost when the subshell exits.
+
+You can use input redirection to avoid using subshell:
 ```bash
 #!/bin/bash
 # Good way to loop over lines in a file using input redirection
+count=0
 while IFS= read -r line; do
   echo "line: $line"
+  count=$((count + 1))
 done < lines
+echo "Total lines: $count"
 ```
-This approach is more efficient as it avoids subshell created by the pipe.
+This approach is correct and will give you the expected output of lines and correct count.
