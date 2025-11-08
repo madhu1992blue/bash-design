@@ -43,6 +43,8 @@ Notice that the element with a space (`elem 2`) is split into two separate eleme
 
 While using `${arr[@]}` is generally preferred over `${arr[*]}` for looping over arrays, both approaches suffer from the same issue of word splitting on spaces.
 
+## Good way
+
 The right way to loop over each element of an array in bash is to quote the expansion while using `${arr[@]}`:
 ```bash
 #!/bin/bash
@@ -54,6 +56,7 @@ for elem in "${arr[@]}"; do
 done
 ```
 
+## Danger Zone
 Dangerously, Now one might assume that quoting `${arr[*]}` would also work:
 ```bash
 #!/bin/bash

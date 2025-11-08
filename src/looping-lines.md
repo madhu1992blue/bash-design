@@ -29,12 +29,12 @@ The issues with above approach are:
 1. Lines with spaces are split into multiple words.
 2. Large file contents can lead to command line length limits being exceeded.
 
-A better way to loop over each line of a file is to use a `while` loop with `read`:
+Yet another naive way to loop over each line of a file is to use a `while` loop with `read`:
 ```bash
 #!/bin/bash
-# Better way to loop over lines in a file
-# This approach handles lines with spaces and special characters correctly.
-
+# Yet another way to loop over lines in a file
+# This approach handles lines with spaces and special characters correctly but launches a subshell
+# where variables modified inside the loop are not accessible outside.
 cat lines | while IFS= read -r line; do
   echo "line: $line"
 done
@@ -59,6 +59,7 @@ echo "Total lines: $count"
 You might expect the output to be `Total lines: 3`, but it will actually be `Total lines: 0` because the `count` variable is modified in a subshell.
 After the pipe, everything runs in a subshell, so changes to `count` are lost when the subshell exits.
 
+## Good way
 You can use input redirection to avoid using subshell:
 ```bash
 #!/bin/bash
